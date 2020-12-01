@@ -1,20 +1,51 @@
-!doctype html
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
 
 <head>
+    <!-- Stylesheets and whatnot -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="assets/style.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital@0;1&display=swap" rel="stylesheet">
+
+    <title>Relten's Java Quiz</title>
 
 </head>
-<header>
-    <div id="timer"></div>
-    <div id="score"></div>
-</header>
+<!-- The java quiz itself. Runs mostly off of javascript using DOM commands. -->
 
-<body>
-    <div id="quiz"></div>
-    <button id="submit">
-    </button>
-</body>
+<div class="wrapper">
 
-<script src="assets/script.js"></script>
+    <!-- Header card wit timer and score, want this to follow as the user pans around. -->
+    <header>
+
+        <div id="timer"></div>
+        <div id="score"></div>
+
+    </header>
+
+    <!-- The quiz itself -->
+    <div id="card">
+        <div id="question">
+        </div>
+        <div id="answers">
+        </div>
+
+        <body>
+            <div id="quiz">
+
+            </div>
+            <button id="submit">Submit Answer</button>
+
+        </body>
+    </div>
+</div>
+
+<!-- Script source -->
+<script src="assets/script.js">
+
+</script>
 
 </html>
