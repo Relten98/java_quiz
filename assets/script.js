@@ -1,12 +1,13 @@
 let timer =;
-let input = document.getElementById()
+let input = document.getElementById().value
 let timedisplay = lorem;
+var questionsAll = 
 var answer = n
 var score = x
 var gradePass = false
 
-function question()  {
-
+function beginQuiz()  {
+a
 }
 
 function addscore() {
@@ -15,13 +16,4 @@ function addscore() {
     }
 }
 
-function grader() {
-    if (x =< 5) {
-
-        alert("I'm sorry, but you have failed this quiz. :(");
-    }
-    else (x => 8){
-
-        alert("Congratulations, you have passed the quiz!");
-    }
-}
+begin.addEventListener("click", beginQuiz);
