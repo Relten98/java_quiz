@@ -1,19 +1,15 @@
-let timer =;
-let input = document.getElementById().value
-let timedisplay = lorem;
-var questionsAll = 
-var answer = n
-var score = x
-var gradePass = false
+const quiz {
 
-function beginQuiz()  {
-a
 }
+let x = document.getElementById("score");
 
-function addscore() {
-    if (answer == true) {
-        x++;
-    }
-}
 
-begin.addEventListener("click", beginQuiz);
+function beginQuiz() {
+    document.getElementById("btn").innerHTML = "Submit Answer";
+    document.getElementById("qHeader").innerHTML = "";
+    document.getElementById("qHeader").innerHTML = quiz.questionKey;
+};
+
+
+
+btn.addEventListener("click", beginQuiz);

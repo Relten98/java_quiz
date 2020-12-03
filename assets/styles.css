@@ -1,10 +1,10 @@
-body {
+html {
     font-family: 'PT Serif', serif;
     background-color: #464f5a;
 }
 
 #score {
-bac
+
 }
 
 #timer {
@@ -15,7 +15,7 @@ bac
 
 }
 
-#submit {
+#btn {
     border: none;
     background-color: hsl(360, 91%, 36%);
     border-radius: 25px;
