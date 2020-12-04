@@ -6,27 +6,71 @@ let x = 0
 
 /// misc declarations. this be mostly the buttons and the html magic.
 
-document.getElementById("score").innerHTML = "Score" + x
-let quizBtn = document.getElementById("begin")
-let = headQuest = document.getElementById("qHeader").innerHTML = ""
+document.getElementById("score").innerHTML = "Score" + " : " + x
 /// This one is used for a page default.
-document.getElementById("qHeader2").innerHTML = "The Java Quiz"
+document.getElementById("qHeader2").innerHTML = "";
 
-quizBtn.addEventListener("click", setTime);
+document.getElementById("begin").addEventListener("click", setTime);
+
+
 
 /////////////////////////////////////////////////////
 
 // Th' riddles themselves, this system ain't efficient, but I wanted it t' be modular.
-
+const answers = []
 
 // This selects th' riddles from an array, allowin' fer some form o' riddle randomization.
-var questions = [q1, q2, q3, q4, q5, q6, q7, q8, q9, q10]
+const quizQuestions = [
+    {
+        question: "Who invented JavaScript?",
+        answers: {
+            a: "Douglas Crockford",
+            b: "Sheryl Sandberg",
+            c: "Brendan Eich"
+        },
+        correctAnswer: "c"
+    },
+    {
+        question: "Which one of these is a JavaScript package manager?",
+        answers: {
+            a: "Node.js",
+            b: "TypeScript",
+            c: "npm"
+        },
+        correctAnswer: "c"
+    },
+    {
+        question: "Which tool can you use to ensure code quality?",
+        answers: {
+            a: "Angular",
+            b: "jQuery",
+            c: "RequireJS",
+            d: "ESLint"
+        },
+        correctAnswer: "d"
+    }
+];
+
+function nextQuestion() {
+    return;
+}
+
+function validator() {
+    if (correctAnswer = true) {
+        x++;
+    } else if (correctAnswer = false) {
+        timeLeft - 50;
+    }
+    nextQuestion();
+};
+
+
 
 ///////////////////
 
 /// Timer Time, this judges how long the quiz lasts. Second half is only for display purposes for the quiz taker. 
 var timeLeft = 26000;
-
+        document.getElementById("timer").textContent = "Time left : " + timeLeft;
 
 //// Actually, screw that.... I be commentin' out this shiznit fer now.
 
@@ -36,9 +80,14 @@ var timeLeft = 26000;
 // The time magic itself
 
 function setTime() {
+    /// This is here to swap the button to the submittor btn.
+    document.getElementById('begin').id = "begin2";
+    document.getElementById("begin2").addEventListener("click", setTime);
+
+    /// Timer stuff.
     var timerInterval = setInterval(function () {
         timeLeft--;
-        document.getElementById("timer").textContent = minutes + ":" + seconds;
+        document.getElementById("timer").textContent = "Time left : " + timeLeft;
         beginQuiz();
 
         if (timeLeft === 0) {
@@ -47,18 +96,34 @@ function setTime() {
         }
 
     });
-}
+};
 
 
 function beginQuiz() {
+    /// Hidden for questions
     document.getElementById("qHeader").innerHTML = "";
-    document.getElementById("begin").innerHTML = "Submit Answer";
-    document.getElementById("qHeader2").innerHTML = "";
-    return;
-}
+
+    /// Changes html id because I am lazy AF, resets on default.
+    document.getElementById("begin2").innerHTML = "Submit Answer";
+
+    ///Default values
+};
+
+
 
 function endQuiz() {
-    console.log("You did it");
+    document.getElementById('begin2').id = "reset";
+    document.getElementById("reset").addEventListener("click", resetter );
+    alert("You did it, your score is" + " : " + x);
     return;
 }
 
+//// Default values
+function resetter() {
+    document.getElementById("begin").innerHTML = "Begin";
+    document.getElementById("qHeader").innerHTML = "The Java Quiz";
+    document.getElementById("qHeader2").innerHTML = "";
+    return;
+};
+
+////////////////
