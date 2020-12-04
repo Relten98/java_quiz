@@ -26,7 +26,7 @@ function addscore() {
 timeLeft = 2600
 
 /// Displays the starter timer
-document.getElementById("score").innerHTML = "Time" + " : " + timeLeft;
+document.getElementById("timer").innerHTML = "Time Left" + " : " + timeLeft;
 // The time magic itself
 
 function setTime() {
@@ -47,31 +47,9 @@ function setTime() {
 
     });
 };
+function beginQuiz(){
 
-
-function beginQuiz() {
-    /// Replaces the title with the questions.
-    document.getElementById("qHeader").innerHTML = quizQuestions.question
-    document.getElementById("btn-a").innerHTML = this.a;
-    document.getElementById("btn-b").innerHTML = this.b;
-    document.getElementById("btn-c").innerHTML = this.c;
-    document.getElementById("btn-d").innerHTML = this.d;
-
-    /// Won't display the btn if the answer is a null value.
-
-    if (quizQuestions.answers.c = 0) {
-        document.getElementById("btn-c").innerHTML = "";
-    }
-    if (quizQuestions.answers.d = 0) {
-        document.getElementById("btn-d").innerHTML = "";
-    }
-
-    /// Changes html id because I am lazy AF, resets on default.
-    document.getElementById("begin2").innerHTML = "Submit Answer";
-
-};
-
-
+}
 
 function endQuiz() {
 
