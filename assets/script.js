@@ -9,92 +9,24 @@ let a = "";
 let b = "";
 let c = "";
 let d = "";
+document.getElementById("score").innerHTML = "Score" + " : " + x;
 
-/// misc declarations. this be mostly the buttons and the html magic.
+var start = document.getElementById("begin").addEventListener("click", setTime);
 
-document.getElementById("score").innerHTML = "Score" + " : " + x
-/// This one is used for a page default.
-
-document.getElementById("begin").addEventListener("click", setTime);
-
-
-
-/////////////////////////////////////////////////////
-
-// Th' riddles themselves, this system ain't efficient, but I wanted it t' be modular.
-const answers = []
-
-// This selects th' riddles from an array, allowin' fer some form o' riddle randomization.
-const quizQuestions = [
-    {
-        question: "Who invented JavaScript?",
-        answers: {
-            a: "Douglas Crockford",
-            b: "Sheryl Sandberg",
-            c: "Brendan Eich"
-        },
-        correctAnswer: c
-    },
-    {
-        question: "Which of the following has proper syntax?",
-        answers: {
-            a: "if(x > y) { myfunction(n) }",
-            b: "if x > y { myfunction(n) };",
-            c: "if(x > y) { myfunction(n) };"
-        },
-        correctAnswer: c
-    },
-    {
-        question: "Which tool can you use to ensure code quality?",
-        answers: {
-            a: "Angular",
-            b: "jQuery",
-            c: "RequireJS",
-            d: "ESLint"
-        },
-        correctAnswer: d
-    },
-    {
-        question: "True or false: functions can use vars that haven't been defined.",
-        answers: {
-            a: "True",
-            b: "false"
-        },
-        correctAnswer: b
-    }
-];
-
-function buildQuiz() {
-    
-}
-
-function nextQuestion() {
-    quizQuestions++;
+function addscore() {
+    document.getElementById("score").innerHTML = "Score" + " : " + x;
     return;
 }
 
-function validator() {
-    if (quizQuestions.correctAnswer = true) {
-        x++;
-    } else if (quizQuestions.correctAnswer = false) {
-        timeLeft - 50;
-    }
-    nextQuestion();
-};
-
-
-
-///////////////////
-
-/// Timer Time, this judges how long the quiz lasts. Second half is only for display purposes for the quiz taker. 
-var timeLeft = 200;
-document.getElementById("timer").textContent = "Time left : " + timeLeft;
 
 //// Actually, screw that.... I be commentin' out this shiznit fer now.
 
 //var minutes = Math.floor((secondsLeft % (1000 * 60 * 60)) / (1000 * 60));
 //var seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+timeLeft = 2600
 
+/// Displays the starter timer
+document.getElementById("score").innerHTML = "Time" + " : " + timeLeft;
 // The time magic itself
 
 function setTime() {
@@ -120,18 +52,17 @@ function setTime() {
 function beginQuiz() {
     /// Replaces the title with the questions.
     document.getElementById("qHeader").innerHTML = quizQuestions.question
-    document.getElementById("btn-a").innerHTML = quizQuestions.answers.a;
-    document.getElementById("btn-b").innerHTML = quizQuestions.answers.b;
-    document.getElementById("btn-c").innerHTML = quizQuestions.answers.c;
-    document.getElementById("btn-d").innerHTML = quizQuestions.answers.d;
+    document.getElementById("btn-a").innerHTML = this.a;
+    document.getElementById("btn-b").innerHTML = this.b;
+    document.getElementById("btn-c").innerHTML = this.c;
+    document.getElementById("btn-d").innerHTML = this.d;
 
     /// Won't display the btn if the answer is a null value.
 
-    if (quizQuestions.answers.c = null) {
+    if (quizQuestions.answers.c = 0) {
         document.getElementById("btn-c").innerHTML = "";
     }
-
-    else if (quizQuestions.answers.d = null) {
+    if (quizQuestions.answers.d = 0) {
         document.getElementById("btn-d").innerHTML = "";
     }
 
@@ -160,6 +91,7 @@ function endQuiz() {
 
 //// Default values
 function resetQuiz() {
+
     document.getElementById("begin2").innerHTML = "Begin";
     document.getElementById('begin2').id = "begin";
     document.getElementById("qHeader").innerHTML = "The Java Quiz";
