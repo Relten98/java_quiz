@@ -4,11 +4,16 @@
 var i = 0;
 let x = 0
 
+/// These are just letter values don't mind them.
+let a = "";
+let b = "";
+let c = "";
+let d = "";
+
 /// misc declarations. this be mostly the buttons and the html magic.
 
 document.getElementById("score").innerHTML = "Score" + " : " + x
 /// This one is used for a page default.
-document.getElementById("qHeader2").innerHTML = "";
 
 document.getElementById("begin").addEventListener("click", setTime);
 
@@ -28,16 +33,16 @@ const quizQuestions = [
             b: "Sheryl Sandberg",
             c: "Brendan Eich"
         },
-        correctAnswer: "c"
+        correctAnswer: c
     },
     {
-        question: "Which one of these is a JavaScript package manager?",
+        question: "Which of the following has proper syntax?",
         answers: {
-            a: "Node.js",
-            b: "TypeScript",
-            c: "npm"
+            a: "if(x > y) { myfunction(n) }",
+            b: "if x > y { myfunction(n) };",
+            c: "if(x > y) { myfunction(n) };"
         },
-        correctAnswer: "c"
+        correctAnswer: c
     },
     {
         question: "Which tool can you use to ensure code quality?",
@@ -47,18 +52,31 @@ const quizQuestions = [
             c: "RequireJS",
             d: "ESLint"
         },
-        correctAnswer: "d"
+        correctAnswer: d
+    },
+    {
+        question: "True or false: functions can use vars that haven't been defined.",
+        answers: {
+            a: "True",
+            b: "false"
+        },
+        correctAnswer: b
     }
 ];
 
+function buildQuiz() {
+    
+}
+
 function nextQuestion() {
+    quizQuestions++;
     return;
 }
 
 function validator() {
-    if (correctAnswer = true) {
+    if (quizQuestions.correctAnswer = true) {
         x++;
-    } else if (correctAnswer = false) {
+    } else if (quizQuestions.correctAnswer = false) {
         timeLeft - 50;
     }
     nextQuestion();
@@ -69,8 +87,8 @@ function validator() {
 ///////////////////
 
 /// Timer Time, this judges how long the quiz lasts. Second half is only for display purposes for the quiz taker. 
-var timeLeft = 26000;
-        document.getElementById("timer").textContent = "Time left : " + timeLeft;
+var timeLeft = 200;
+document.getElementById("timer").textContent = "Time left : " + timeLeft;
 
 //// Actually, screw that.... I be commentin' out this shiznit fer now.
 
@@ -100,29 +118,54 @@ function setTime() {
 
 
 function beginQuiz() {
-    /// Hidden for questions
-    document.getElementById("qHeader").innerHTML = "";
+    /// Replaces the title with the questions.
+    document.getElementById("qHeader").innerHTML = quizQuestions.question
+    document.getElementById("btn-a").innerHTML = quizQuestions.answers.a;
+    document.getElementById("btn-b").innerHTML = quizQuestions.answers.b;
+    document.getElementById("btn-c").innerHTML = quizQuestions.answers.c;
+    document.getElementById("btn-d").innerHTML = quizQuestions.answers.d;
+
+    /// Won't display the btn if the answer is a null value.
+
+    if (quizQuestions.answers.c = null) {
+        document.getElementById("btn-c").innerHTML = "";
+    }
+
+    else if (quizQuestions.answers.d = null) {
+        document.getElementById("btn-d").innerHTML = "";
+    }
 
     /// Changes html id because I am lazy AF, resets on default.
     document.getElementById("begin2").innerHTML = "Submit Answer";
 
-    ///Default values
 };
 
 
 
 function endQuiz() {
-    document.getElementById('begin2').id = "reset";
-    document.getElementById("reset").addEventListener("click", resetter );
-    alert("You did it, your score is" + " : " + x);
+
+    /// hides the quiz.
+    document.getElementById("begin2").innerHTML = "";
+    document.getElementById("btn-a").innerHTML = "";
+    document.getElementById("btn-b").innerHTML = "";
+    document.getElementById("btn-c").innerHTML = "";
+    document.getElementById("btn-d").innerHTML = "";
+
+    /// Sets up the end, and allows the form to be resetted.
+    document.getElementById('resetter').innerHTML = "Try Again?";
+    document.getElementById("resetter").addEventListener("click", resetQuiz);
+    document.getElementById("scorepage").innerHTML = "Your score is : " + x;
     return;
 }
 
 //// Default values
-function resetter() {
-    document.getElementById("begin").innerHTML = "Begin";
+function resetQuiz() {
+    document.getElementById("begin2").innerHTML = "Begin";
+    document.getElementById('begin2').id = "begin";
     document.getElementById("qHeader").innerHTML = "The Java Quiz";
-    document.getElementById("qHeader2").innerHTML = "";
+    document.getElementById('resetter').innerHTML = "";
+    document.getElementById("scorepage").innerHTML = ""
+    timeLeft = 2600
     return;
 };
 
