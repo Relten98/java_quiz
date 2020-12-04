@@ -1,6 +1,6 @@
 html {
     font-family: 'PT Serif', serif;
-    background-color: #5e3253;
+    background-color: #797b99;
   
 }
 
@@ -12,13 +12,12 @@ body {
 
 }
 
-
 #spacer {
   margin: 10px;
 }
 
 #card {
-  background: #9e6d92;
+  background: #babeca;
   padding: 10px;
   margin-top: 5px;
   margin-right: 0px;
@@ -26,13 +25,12 @@ body {
   margin-left: 0px;
 }
 
-
-#timer {
+#quiz {
 
 }
 
-#quiz {
-
+#timer {
+ font-weight: bold; 
 }
 
 button {
