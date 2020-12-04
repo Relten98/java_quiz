@@ -21,6 +21,12 @@ let b = [5, "Chuck Norris", "if (x < 0) myfunction(};", false];
 let c = [6, "Brendan Eich", "if (x < 0) { myfunction()}", 0];
 let d = [2, "Elon Musk", "if (x < 0) { myfunction()  };", 0];
 
+var questions_iterator = questions.entries();
+var a_iterator = a.entries();
+var b_iterator = b.entries();
+var c_iterator = c.entries();
+var d_iterator = d.entries();
+
 /// Answer vars
 
 /// n stands for user input, while correct is defined by question
@@ -41,10 +47,22 @@ var start = document.getElementById("begin").addEventListener("click", beginQuiz
 
 function drawQuestions() {
     document.getElementById("begin").innerHTML = "";
+    document.getElementById("qHeader").innerHTML = questions[0];
     document.getElementById("btn-a").innerHTML = a[0];
     document.getElementById("btn-b").innerHTML = b[0];
     document.getElementById("btn-c").innerHTML = c[0];
     document.getElementById("btn-d").innerHTML = d[0];
+
+    if (c = 0) {
+        document.getElementById("btn-c").innerHTML = "";
+        document.getElementById("btn-d").innerHTML = "";
+        return;
+    };
+    if (d = 0) {
+        document.getElementById("btn-d").innerHTML = "";
+        return;
+    };
+    return;
 }
 
 
@@ -55,13 +73,19 @@ var timeLeft = 4000;
 /// Score stuff, subtracts time if the wrong answer is selected.
 
 function validator() {
+    
     if (n == correctanswer) {
-    document.getElementById("score").innerHTML = "Score" + " : " + x++;
-    return;
-}  else {
-    timeLeft - 50;
-    console.log("Incorrect. -50 points for Gryffindor.")
-}
+        document.getElementById("score").innerHTML = "Score" + " : " + x++;
+        questions_iterator.next();
+        a_iterator.next();
+        b_iterator.next();
+        c_iterator.next();
+        d_iterator.next();
+        return;
+    } else {
+        (timeLeft - 500);
+        console.log("Incorrect. -50 points for Gryffindor.")
+    }
 }
 
 /// Displays the starter timer
@@ -88,38 +112,18 @@ function setTime() {
     });
 };
 
-
-
-
+/// Sets up the end, and allows the form to be resetted.
 function endQuiz() {
-
-    /// hides the quiz.
+    timeLeft + 2600;
+    document.getElementById("qHeader").innerHTML = "Game Over!"
+    document.getElementById('resetter').innerHTML = "Try Again?";
+    document.getElementById("resetter").addEventListener("click", resetQuiz);
+    document.getElementById("scorepage").innerHTML = "Your score is : " + x;
     document.getElementById("btn-a").innerHTML = "";
     document.getElementById("btn-b").innerHTML = "";
     document.getElementById("btn-c").innerHTML = "";
     document.getElementById("btn-d").innerHTML = "";
-
-
-    /// This ensures null answers are culled. if C is null, D is null as well.
-    if (c = 0) {
-        document.getElementById("btn-c").innerHTML = "";
-        document.getElementById("btn-d").innerHTML = "";
-        return;
-    };
-    if (d = 0) {
-        document.getElementById("btn-d").innerHTML = "";
-        return;
-    };
     return;
-};
-
-/// Sets up the end, and allows the form to be resetted.
-function endQuiz() {
-timeLeft + 2600;
-document.getElementById('resetter').innerHTML = "Try Again?";
-document.getElementById("resetter").addEventListener("click", resetQuiz);
-document.getElementById("scorepage").innerHTML = "Your score is : " + x;
-return;
 };
 
 //// Default values
