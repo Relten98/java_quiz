@@ -1,11 +1,31 @@
 html {
     font-family: 'PT Serif', serif;
-    background-color: #464f5a;
+    background-color: #5e3253;
+  
+}
+
+body {
+  text-align: center;
 }
 
 #score {
 
 }
+
+
+#spacer {
+  margin: 10px;
+}
+
+#card {
+  background: #9e6d92;
+  padding: 10px;
+  margin-top: 5px;
+  margin-right: 0px;
+  margin-bottom: 50px;
+  margin-left: 0px;
+}
+
 
 #timer {
 
@@ -16,6 +36,8 @@ html {
 }
 
 button {
+  border-radius: 25px;
+  font size: 12px;
   margin-top: 20px;
   line-height: 60px;
   font-weight: bold;
