@@ -8,19 +8,27 @@ let x = 0
 /// QUESTION VARS
 ////////////////////////////////////////
 
+var questions = [
+    "What's 1+1?",
+    "Who created Javascript?",
+    "Which of these will NOT generate a syntax error?",
+    "True or false: Bootstrap is a handy tool to help speed up javascript.", ""];
 
-/// These are just letter values don't mind them.
-let a = "";
-let b = "";
-let c = "";
-let d = "";
+/// These are just letter values don't mind them. they are just the answers.
+
+let a = [3, "Brian Erics", "if {x < 0}( myfunction ());", true];
+let b = [5, "Chuck Norris", "if (x < 0) myfunction(};", false];
+let c = [6, "Brendan Eich", "if (x < 0) { myfunction()}", 0];
+let d = [2, "Elon Musk", "if (x < 0) { myfunction()  };", 0];
 
 /// Answer vars
 
 /// n stands for user input, while correct is defined by question
 let n = "";
 
-let correctanswer = "";
+/// There is probably a better way to handle this answer parser, but I am running out of time and options here.
+
+let correctanswer = [2, "Brendan Eich", "if (x < 0) { myfunction()  };", false];
 
 //////////////////////////////////////////////////
 ///////////////// SCORE CHECKER /////////////////
@@ -28,43 +36,49 @@ let correctanswer = "";
 
 document.getElementById("score").innerHTML = "Score" + " : " + x;
 
-var start = document.getElementById("begin").addEventListener("click", setTime);
+var start = document.getElementById("begin").addEventListener("click", beginQuiz);
 
-function addscore() {
-    document.getElementById("score").innerHTML = "Score" + " : " + x++;
-    return;
+
+function drawQuestions() {
+    document.getElementById("begin").innerHTML = "";
+    document.getElementById("btn-a").innerHTML = a[0];
+    document.getElementById("btn-b").innerHTML = b[0];
+    document.getElementById("btn-c").innerHTML = c[0];
+    document.getElementById("btn-d").innerHTML = d[0];
 }
 
-function validator() {
-    /// Checks to see if it is correct.
-    if (correctanswer = n){
-        addscore();
-    } else {
-        timeLeft - 50;
-    }
-}
 
 //// Actually, screw that.... I be commentin' out this shiznit fer now.
 
-//var minutes = Math.floor((secondsLeft % (1000 * 60 * 60)) / (1000 * 60));
-//var seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-timeLeft = 2600
+var timeLeft = 4000;
+
+/// Score stuff, subtracts time if the wrong answer is selected.
+
+function validator() {
+    if (n == correctanswer) {
+    document.getElementById("score").innerHTML = "Score" + " : " + x++;
+    return;
+}  else {
+    timeLeft - 50;
+    console.log("Incorrect. -50 points for Gryffindor.")
+}
+}
 
 /// Displays the starter timer
-document.getElementById("timer").innerHTML = "Time Left" + " : " + timeLeft;
+document.getElementById("timer").innerHTML = "🕑 " + timeLeft;
 // The time magic itself
 
 function setTime() {
     /// This is here to swap the button to the submittor btn.
-    document.getElementById('begin').id = "begin2";
-    document.getElementById("begin2").innerHTML = "Submit"
-    document.getElementById("begin2").addEventListener("click", addscore);
+    document.getElementById("btn-a").addEventListener("click", validator);
+    document.getElementById("btn-b").addEventListener("click", validator);
+    document.getElementById("btn-c").addEventListener("click", validator);
+    document.getElementById("btn-d").addEventListener("click", validator);
 
     /// Timer stuff.
     var timerInterval = setInterval(function () {
         timeLeft--;
-        document.getElementById("timer").textContent = "Time left : " + timeLeft;
-        beginQuiz();
+        document.getElementById("timer").textContent = "🕑 " + timeLeft;
 
         if (timeLeft === 0) {
             clearInterval(timerInterval);
@@ -73,37 +87,54 @@ function setTime() {
 
     });
 };
-function beginQuiz(){
 
-}
+
+
 
 function endQuiz() {
 
     /// hides the quiz.
-    document.getElementById("begin2").innerHTML = "";
     document.getElementById("btn-a").innerHTML = "";
     document.getElementById("btn-b").innerHTML = "";
     document.getElementById("btn-c").innerHTML = "";
     document.getElementById("btn-d").innerHTML = "";
 
-    /// Sets up the end, and allows the form to be resetted.
-    timeLeft + 2600;
-    document.getElementById('resetter').innerHTML = "Try Again?";
-    document.getElementById("resetter").addEventListener("click", resetQuiz);
-    document.getElementById("scorepage").innerHTML = "Your score is : " + x;
+
+    /// This ensures null answers are culled. if C is null, D is null as well.
+    if (c = 0) {
+        document.getElementById("btn-c").innerHTML = "";
+        document.getElementById("btn-d").innerHTML = "";
+        return;
+    };
+    if (d = 0) {
+        document.getElementById("btn-d").innerHTML = "";
+        return;
+    };
     return;
-}
+};
+
+/// Sets up the end, and allows the form to be resetted.
+function endQuiz() {
+timeLeft + 2600;
+document.getElementById('resetter').innerHTML = "Try Again?";
+document.getElementById("resetter").addEventListener("click", resetQuiz);
+document.getElementById("scorepage").innerHTML = "Your score is : " + x;
+return;
+};
 
 //// Default values
 function resetQuiz() {
     timeLeft = 2600;
     x = 0;
-    document.getElementById("begin2").innerHTML = "Begin";
-    document.getElementById('begin2').id = "begin";
+    document.getElementById("begin").innerHTML = "Begin";
     document.getElementById("qHeader").innerHTML = "The Java Quiz";
     document.getElementById('resetter').innerHTML = "";
     document.getElementById("scorepage").innerHTML = ""
     return;
 };
 
-////////////////
+//////////////// Initializes the quiz
+function beginQuiz() {
+    drawQuestions();
+    setTime();
+};

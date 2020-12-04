@@ -30,7 +30,8 @@ body {
 }
 
 #timer {
- font-weight: bold; 
+ font-weight: bold;
+ margin-right: 10px; 
 }
 
 button {
