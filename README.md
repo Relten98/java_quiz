@@ -7,4 +7,4 @@ This file is a simple quiz that tests your knowledge of java, how much do you kn
 
 [Deployed](...)
 
-[Repo]
+[Repo](https://github.com/Relten98/java_quiz.io)
