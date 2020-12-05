@@ -7,38 +7,51 @@ let x = 0
 /////////////////////////////////////////
 /// QUESTION VARS
 ////////////////////////////////////////
-
-var questions = [
-    "What's 1+1?",
-    "Who created Javascript?",
-    "Which of these will NOT generate a syntax error?",
-    "True or false: Bootstrap is a handy tool to help speed up javascript.", ""];
-
-/// These are just letter values don't mind them. they are just the answers.
-
-let btnA = [3, "Brian Erics", "if {x < 0}( myfunction ());", true];
-let btnB = [5, "Chuck Norris", "if (x < 0) myfunction(};", false];
-let btnC = [6, "Brendan Eich", "if (x < 0) { myfunction()}", 0];
-let btnD = [2, "Elon Musk", "if (x < 0) { myfunction()  };",0];
-var answers = [2,]
+const A = document.getElementById("btn-a");
+const B = document.getElementById("btn-b");
+const C = document.getElementById("btn-c");
+const question = document.getElementById("question");
 
 
+let questions = [
+    {
+        question: "What does HTML stand for?",
+        imgSrc: "img/html.png",
+        A: "Correct",
+        B: "Wrong",
+        C: "Wrong",
+        correct: "A"
+    }, {
+        question: "What does CSS stand for?",
+        imgSrc: "img/css.png",
+        A: "Correct",
+        B: "Wrong",
+        C: "Wrong",
+        correct: "A"
+    }, {
+        question: "What does JS stand for?",
+        imgSrc: "img/js.png",
+        A: "Correct",
+        B: "Wrong",
+        C: "Wrong",
+        correct: "A"
+    }
+];
+
+// create some variables
+
+const lastQuestion = questions.length - 1;
+let runningQuestion = 0;
+let count = 0;
+const questionTime = 10; // 10s
+const gaugeWidth = 150; // 150px
+const gaugeUnit = gaugeWidth / questionTime;
+let score = 0;
+
+// render a question
 
 
-var questions_iterator = questions.entries();
-var a_iterator = a.entries();
-var b_iterator = b.entries();
-var c_iterator = c.entries();
-var d_iterator = d.entries();
 
-/// Answer vars
-
-/// n stands for user input, while correct is defined by question
-let n = this;
-
-/// There is probably a better way to handle this answer parser, but I am running out of time and options here.
-
-let correctanswer = [2, "Brendan Eich", "if (x < 0) { myfunction()  };", false];
 
 //////////////////////////////////////////////////
 ///////////////// SCORE CHECKER /////////////////
@@ -50,23 +63,12 @@ var start = document.getElementById("begin").addEventListener("click", beginQuiz
 
 
 function drawQuestions() {
-    document.getElementById("begin").innerHTML = "";
-    document.getElementById("qHeader").innerHTML = questions[0];
-    document.getElementById("btn-a").innerHTML = a[0];
-    document.getElementById("btn-b").innerHTML = b[0];
-    document.getElementById("btn-c").innerHTML = c[0];
-    document.getElementById("btn-d").innerHTML = d[0];
+    let q = questions[runningQuestion];
 
-    if (c = 0) {
-        document.getElementById("btn-c").innerHTML = "";
-        document.getElementById("btn-d").innerHTML = "";
-        return;
-    };
-    if (d = 0) {
-        document.getElementById("btn-d").innerHTML = "";
-        return;
-    };
-    return;
+    document.getElementById("qHeader").innerHTML = q.question;
+    A.innerHTML = q.A;
+    B.innerHTML = q.B;
+    C.innerHTML = q.C;
 }
 
 
@@ -76,20 +78,6 @@ var timeLeft = 4000;
 
 /// Score stuff, subtracts time if the wrong answer is selected.
 
-function validator() {
-    if ( (this) = correctanswer) {
-        document.getElementById("score").innerHTML = "Score" + " : " + x++;
-        questions_iterator.next();
-        a_iterator.next();
-        b_iterator.next();
-        c_iterator.next();
-        d_iterator.next();
-        return;
-    } else {
-        (timeLeft - 500);
-        console.log("Incorrect. -50 points for Gryffindor.")
-    }
-}
 
 /// Displays the starter timer
 document.getElementById("timer").innerHTML = "🕑 " + timeLeft;
@@ -100,7 +88,6 @@ function setTime() {
     document.getElementById("btn-a").addEventListener("click", validator);
     document.getElementById("btn-b").addEventListener("click", validator);
     document.getElementById("btn-c").addEventListener("click", validator);
-    document.getElementById("btn-d").addEventListener("click", validator);
 
     /// Timer stuff.
     var timerInterval = setInterval(function () {
@@ -115,6 +102,26 @@ function setTime() {
     });
 };
 
+function checkAnswer(answer) {
+    if (answer == questions[runningQuestion].correct) {
+        // answer is correct
+        score++;
+        // change progress color to green
+    } else {
+        timeLeft - 50;
+        console.log("-50 points for gryffindor!");
+    }
+    count = 0;
+    if (runningQuestion < lastQuestion) {
+        runningQuestion++;
+        renderQuestion();
+    } else {
+        // end the quiz and show the score
+        clearInterval(timer);
+        scoreRender();
+    }
+}
+
 /// Sets up the end, and allows the form to be resetted.
 function endQuiz() {
     timeLeft + 2600;
@@ -125,7 +132,6 @@ function endQuiz() {
     document.getElementById("btn-a").innerHTML = "";
     document.getElementById("btn-b").innerHTML = "";
     document.getElementById("btn-c").innerHTML = "";
-    document.getElementById("btn-d").innerHTML = "";
     return;
 };
 
