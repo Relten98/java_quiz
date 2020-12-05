@@ -14,37 +14,31 @@ var questions = [
     "Which of these will NOT generate a syntax error?",
     "True or false: Bootstrap is a handy tool to help speed up javascript.", ""];
 
-/// These are just for display, buttons are dictated by a number.
-const myQuestions = [
-    {
-      question: "Who invented JavaScript?",
-      answers: {
-        a: "Douglas Crockford",
-        b: "Sheryl Sandberg",
-        c: "Brendan Eich"
-      },
-      correctAnswer: "c"
-    },
-    {
-      question: "Which one of these is a JavaScript package manager?",
-      answers: {
-        a: "Node.js",
-        b: "TypeScript",
-        c: "npm"
-      },
-      correctAnswer: "c"
-    },
-    {
-      question: "Which tool can you use to ensure code quality?",
-      answers: {
-        a: "Angular",
-        b: "jQuery",
-        c: "RequireJS",
-        d: "ESLint"
-      },
-      correctAnswer: "d"
-    }
-  ];
+/// These are just letter values don't mind them. they are just the answers.
+
+let btnA = [3, "Brian Erics", "if {x < 0}( myfunction ());", true];
+let btnB = [5, "Chuck Norris", "if (x < 0) myfunction(};", false];
+let btnC = [6, "Brendan Eich", "if (x < 0) { myfunction()}", 0];
+let btnD = [2, "Elon Musk", "if (x < 0) { myfunction()  };",0];
+var answers = [2,]
+
+
+
+
+var questions_iterator = questions.entries();
+var a_iterator = a.entries();
+var b_iterator = b.entries();
+var c_iterator = c.entries();
+var d_iterator = d.entries();
+
+/// Answer vars
+
+/// n stands for user input, while correct is defined by question
+let n = this;
+
+/// There is probably a better way to handle this answer parser, but I am running out of time and options here.
+
+let correctanswer = [2, "Brendan Eich", "if (x < 0) { myfunction()  };", false];
 
 //////////////////////////////////////////////////
 ///////////////// SCORE CHECKER /////////////////
@@ -57,15 +51,11 @@ var start = document.getElementById("begin").addEventListener("click", beginQuiz
 
 function drawQuestions() {
     document.getElementById("begin").innerHTML = "";
-    document.getElementById("qHeader").innerHTML = myQuestions.question
-    document.getElementById("btn-a").innerHTML = myQuestions.answers[1];
-    document.getElementById("btn-a").value = a
-    document.getElementById("btn-b").innerHTML = myQuestions.answers[2];
-    document.getElementById("btn-b").value = b
-    document.getElementById("btn-c").innerHTML = myQuestions.answers[3];
-    document.getElementById("btn-c").value = c
-    document.getElementById("btn-d").innerHTML = myQuestions.answers[4];
-    document.getElementById("btn-d").value = d
+    document.getElementById("qHeader").innerHTML = questions[0];
+    document.getElementById("btn-a").innerHTML = a[0];
+    document.getElementById("btn-b").innerHTML = b[0];
+    document.getElementById("btn-c").innerHTML = c[0];
+    document.getElementById("btn-d").innerHTML = d[0];
 
     if (c = 0) {
         document.getElementById("btn-c").innerHTML = "";
@@ -87,7 +77,7 @@ var timeLeft = 4000;
 /// Score stuff, subtracts time if the wrong answer is selected.
 
 function validator() {
-    if (input = correctAnswer) {
+    if ( (this) = correctanswer) {
         document.getElementById("score").innerHTML = "Score" + " : " + x++;
         questions_iterator.next();
         a_iterator.next();
