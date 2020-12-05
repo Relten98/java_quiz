@@ -85,9 +85,6 @@ document.getElementById("timer").innerHTML = "🕑 " + timeLeft;
 
 function setTime() {
     /// This is here to swap the button to the submittor btn.
-    document.getElementById("btn-a").addEventListener("click", validator);
-    document.getElementById("btn-b").addEventListener("click", validator);
-    document.getElementById("btn-c").addEventListener("click", validator);
 
     /// Timer stuff.
     var timerInterval = setInterval(function () {
@@ -150,4 +147,5 @@ function resetQuiz() {
 function beginQuiz() {
     drawQuestions();
     setTime();
+    checkAnswer();
 };
