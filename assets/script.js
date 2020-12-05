@@ -2,8 +2,7 @@
 
 // initial variables. I be fer math tables, while x be goin' t' represent th' score.
 var i = 0;
-let x = 0
-
+let score = 0;
 /////////////////////////////////////////
 /// QUESTION VARS
 ////////////////////////////////////////
@@ -16,37 +15,49 @@ const question = document.getElementById("question");
 let questions = [
     {
         question: "What does HTML stand for?",
-        imgSrc: "img/html.png",
-        A: "Correct",
+        A: "wong",
         B: "Wrong",
-        C: "Wrong",
-        correct: "A"
-    }, {
+        C: "correct",
+        correct: "c"
+    },
+    {
         question: "What does CSS stand for?",
-        imgSrc: "img/css.png",
-        A: "Correct",
-        B: "Wrong",
-        C: "Wrong",
+        A: "Cascading Style Sheets",
+        B: "Computing Style Sheets",
+        C: "Computer System Songs",
         correct: "A"
-    }, {
+    },
+    {
         question: "What does JS stand for?",
-        imgSrc: "img/js.png",
-        A: "Correct",
-        B: "Wrong",
-        C: "Wrong",
+        A: "Javonsipt",
+        B: "Javscript",
+        C: "Jolly Subs",
+        correct: "B"
+    },
+    {
+        question: "What's 1+1?",
+        A: "2",
+        B: "6",
+        C: "1",
         correct: "A"
+    },
+    {
+        question: "True or false: Bootstrap is a handy tool to help speed up javascript.",
+        A: "True",
+        B: "False",
+        C: "Bacon",
+        correct: "B"
+    },
+    {
+        question: "Who created Javascript?",
+        A: "Elon Musk",
+        B: "Brendan Eich",
+        C: "Chuck Norris",
+        correct: "B"
     }
 ];
 
 // create some variables
-
-const lastQuestion = questions.length - 1;
-let runningQuestion = 0;
-let count = 0;
-const questionTime = 10; // 10s
-const gaugeWidth = 150; // 150px
-const gaugeUnit = gaugeWidth / questionTime;
-let score = 0;
 
 // render a question
 
@@ -56,8 +67,6 @@ let score = 0;
 //////////////////////////////////////////////////
 ///////////////// SCORE CHECKER /////////////////
 ////////////////////////////////////////////////
-
-document.getElementById("score").innerHTML = "Score" + " : " + x;
 
 var start = document.getElementById("begin").addEventListener("click", beginQuiz);
 
@@ -98,34 +107,46 @@ function setTime() {
 
     });
 };
+/// More Vars
+const lastQuestion = questions.length - 1;
+let runningQuestion = 0;
+let count = 0;
+const questionTime = 10; // 10s
+const gaugeWidth = 150; // 150px
+const gaugeUnit = gaugeWidth / questionTime;
+
+
+
+
+/// This just grades it.
 
 function checkAnswer(answer) {
     if (answer == questions[runningQuestion].correct) {
-        // answer is correct
+        // Adjusts score if correct.
         score++;
-        // change progress color to green
-    } else {
-        timeLeft - 50;
-        console.log("-50 points for gryffindor!");
+        console.log(score)
+        
+    }
+    else {
+        timeLeft - 150;
     }
     count = 0;
     if (runningQuestion < lastQuestion) {
         runningQuestion++;
-        renderQuestion();
+        drawQuestions();
     } else {
         // end the quiz and show the score
-        clearInterval(timer);
-        scoreRender();
+        runningQuestion = 0;
     }
 }
 
 /// Sets up the end, and allows the form to be resetted.
 function endQuiz() {
-    timeLeft + 2600;
+    timeLeft = 0;
     document.getElementById("qHeader").innerHTML = "Game Over!"
     document.getElementById('resetter').innerHTML = "Try Again?";
     document.getElementById("resetter").addEventListener("click", resetQuiz);
-    document.getElementById("scorepage").innerHTML = "Your score is : " + x;
+    document.getElementById("scorepage").innerHTML = "Your score is : " + score;
     document.getElementById("btn-a").innerHTML = "";
     document.getElementById("btn-b").innerHTML = "";
     document.getElementById("btn-c").innerHTML = "";
@@ -135,7 +156,8 @@ function endQuiz() {
 //// Default values
 function resetQuiz() {
     timeLeft = 2600;
-    x = 0;
+    score = 0;
+    runningQuestion = 0;
     document.getElementById("begin").innerHTML = "Begin";
     document.getElementById("qHeader").innerHTML = "The Java Quiz";
     document.getElementById('resetter').innerHTML = "";
@@ -145,6 +167,8 @@ function resetQuiz() {
 
 //////////////// Initializes the quiz
 function beginQuiz() {
+    document.getElementById("begin").innerHTML = "";
+    document.getElementById("score").innerHTML = "Score" + " : " + score;
     drawQuestions();
     setTime();
     checkAnswer();

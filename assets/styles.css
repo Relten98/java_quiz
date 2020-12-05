@@ -25,8 +25,9 @@ body {
   margin-left: 0px;
 }
 
-#quiz {
-
+#scorepage {
+  margin-top: -23px;
+  font-weight: bold;
 }
 
 #timer {
@@ -41,10 +42,10 @@ button {
   line-height: 60px;
   font-weight: bold;
   padding: 0 40px;
-  background: salmon;
+  background: #838ca5;
   border: none;
 }
 button:hover {
-  background: lightsalmon;
+  background: #adb5ca;
 }
 
