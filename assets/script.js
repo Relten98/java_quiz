@@ -59,13 +59,6 @@ let questions = [
     }
 ];
 
-// create some variables
-
-// render a question
-
-
-
-
 //////////////////////////////////////////////////
 ///////////////// SCORE CHECKER /////////////////
 ////////////////////////////////////////////////
@@ -83,18 +76,18 @@ function drawQuestions() {
 }
 
 
-//// Actually, screw that.... I be commentin' out this shiznit fer now.
-
 var timeLeft = 4000;
 
-/// Score stuff, subtracts time if the wrong answer is selected.
 
 
 /// Displays the starter timer
+
 document.getElementById("timer").innerHTML = "🕑 " + timeLeft;
+
 // The time magic itself
 
 function setTime() {
+
     /// This is here to swap the button to the submittor btn.
 
     /// Timer stuff.
@@ -110,6 +103,7 @@ function setTime() {
     });
 };
 /// More Vars
+
 const lastQuestion = questions.length - 1;
 let runningQuestion = 0;
 let count = 0;
@@ -143,6 +137,7 @@ function checkAnswer(answer) {
 }
 
 /// Sets up the end, and allows the form to be resetted.
+
 function endQuiz() {
     timeLeft = 0;
     document.getElementById("qHeader").innerHTML = "Game Over!"
