@@ -10,6 +10,8 @@ const A = document.getElementById("btn-a");
 const B = document.getElementById("btn-b");
 const C = document.getElementById("btn-c");
 const question = document.getElementById("question");
+var drawscore =  document.getElementById("score").textContent;
+
 
 
 let questions = [
@@ -30,7 +32,7 @@ let questions = [
     {
         question: "What does JS stand for?",
         A: "Javonsipt",
-        B: "Javscript",
+        B: "Javascript",
         C: "Jolly Subs",
         correct: "B"
     },
@@ -121,10 +123,10 @@ const gaugeUnit = gaugeWidth / questionTime;
 /// This just grades it.
 
 function checkAnswer(answer) {
-    if (answer == questions[runningQuestion].correct) {
+    if (answer = questions[runningQuestion].correct) {
         // Adjusts score if correct.
         score++;
-        console.log(score)
+        drawscore = "Score" + " :" + score;
         
     }
     else {
@@ -168,7 +170,7 @@ function resetQuiz() {
 //////////////// Initializes the quiz
 function beginQuiz() {
     document.getElementById("begin").innerHTML = "";
-    document.getElementById("score").innerHTML = "Score" + " : " + score;
+    drawscore = "Score" + " : 0";
     drawQuestions();
     setTime();
     checkAnswer();
