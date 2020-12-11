@@ -11,9 +11,9 @@ Features:
 • A silly sensde of humor
 
 
-![Screenshot](https://github.com/Relten98/java_quiz/blob/main/quiz%20site.png)
+![Screenshot](https://github.com/Relten98/javascript_quiz/blob/main/quiz%20site.png)
 Image is based on an older test version, and only partially represents the finished product....
 
-[Deployed](https://relten98.github.io/java_quiz/)
+[Deployed](https://relten98.github.io/javascript_quiz/)
 
-[Repo](https://github.com/Relten98/java_quiz)
+[Repo](https://github.com/Relten98/javascript_quiz)
